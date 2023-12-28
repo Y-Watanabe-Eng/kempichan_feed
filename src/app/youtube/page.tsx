@@ -15,11 +15,11 @@ export default function Youtube() {
 
   useEffect(() =>{
 
-    const fetchData = async() => {
+    const videoData = async() => {
   
       try {
         const data = await getYoutube()
-        setYoutubeData(videoData.items)
+        setYoutubeData(data.items)
         console.log(data)
       } catch (error) {
         console.error("Error Youtube Data:", error)
@@ -27,7 +27,7 @@ export default function Youtube() {
 
     }
 
-    fetchData()
+    videoData()
 
   }, [])
   
