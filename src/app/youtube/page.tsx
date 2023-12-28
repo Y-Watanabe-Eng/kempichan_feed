@@ -1,7 +1,7 @@
 "use client"
 
 import { NextPage } from 'next'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import getYoutube from './api'
 
 interface Props {
@@ -19,8 +19,8 @@ export default function Youtube() {
   
       try {
         const data = await getYoutube()
-        setYoutubeData(videoData, items)
-        console.log(videoData)
+        setYoutubeData(videoData.items)
+        console.log(data)
       } catch (error) {
         console.error("Error Youtube Data:", error)
       }
