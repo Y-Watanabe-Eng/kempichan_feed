@@ -15,7 +15,7 @@ export default function Youtube() {
 
   useEffect(() =>{
 
-    const videoData = async() => {
+    const fetchData = async() => {
   
       try {
         const data = await getYoutube()
@@ -27,7 +27,7 @@ export default function Youtube() {
 
     }
 
-    videoData()
+    fetchData()
 
   }, [])
   
