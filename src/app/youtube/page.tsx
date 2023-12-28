@@ -10,7 +10,19 @@ interface Props {
 
 export default function Youtube() {
 
-  getYoutube()
+  async function videoData() {
+  
+    try youtubeData = await getYoutube()
+    
+    console.log(youtubeData)
+  
+  } catch (error) {
+
+    console.error("Error Youtube Data:", error)
+
+  }
+
+  
 
   return (
     <body>
