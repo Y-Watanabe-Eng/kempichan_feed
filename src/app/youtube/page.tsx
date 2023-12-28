@@ -11,23 +11,23 @@ interface Props {
 
 export default function Youtube() {
 
-  const [videoData, setYoutubeData] = useState([])
+  const [youtubeData, setYoutubeData] = useState([])
 
   useEffect(() =>{
 
-    const youtubeData = async() => {
+    const fetchData = async() => {
   
       try {
         const data = await getYoutube()
-        setYoutubeData(data, items)
-        console.log(data)
+        setYoutubeData(videoData, items)
+        console.log(videoData)
       } catch (error) {
         console.error("Error Youtube Data:", error)
       }
 
     }
 
-    youtubeData()
+    fetchData()
 
   }, [])
   
