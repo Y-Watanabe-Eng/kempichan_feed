@@ -15,13 +15,10 @@ export default function Youtube() {
     const youtubeData = async() => {
   
       try {
-
         videoData = await getYoutube()
-    
         console.log(videoData)
   
       } catch (error) {
-
         console.error("Error Youtube Data:", error)
 
       }
