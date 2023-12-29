@@ -47,7 +47,7 @@ export default function Youtube() {
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div>
           <ul>
-          {youtubeData.map((itemsData) => (
+          {youtubeData.map((videoData) => (
 
 
            const videoTitle = videoData.items.title
