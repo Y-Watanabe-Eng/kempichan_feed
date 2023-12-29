@@ -19,7 +19,7 @@ export default function Youtube() {
   
       try {
         const videoData = await getYoutube()
-        setYoutubeData(videoData.items)
+        setYoutubeData(videoData)
         console.log(videoData)
       } catch (error) {
         console.error("Error Youtube Data:", error)
@@ -50,10 +50,10 @@ export default function Youtube() {
           {youtubeData.map((itemsData) => (
 
 
-           const videoTitle = itemsData.title
-           const videoId = itemsData.id
-           const videoUploadDate = itemsData.snippet.publishedAt
-           const thumbnailUrl = itemsData.items.snippet.thumbnail.url
+           const videoTitle = videoData.items.title
+           const videoId = videoData.items.id
+           const videoUploadDate = videoData.items.snippet.publishedAt
+           const thumbnailUrl = videoData.items.snippet.thumbnail.url
 
             
             return(
