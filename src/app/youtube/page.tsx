@@ -18,9 +18,9 @@ export default function Youtube() {
     const fetchData = async() => {
   
       try {
-        const data = await getYoutube()
-        setYoutubeData(data.items)
-        console.log(data)
+        const videoData = await getYoutube()
+        setYoutubeData(videoData.items)
+        console.log(videoData)
       } catch (error) {
         console.error("Error Youtube Data:", error)
       }
