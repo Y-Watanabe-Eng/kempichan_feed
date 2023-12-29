@@ -57,9 +57,9 @@ export default function Youtube() {
 
             
             return(
-            <div className='grid sm:grid-cols-2 my-8 mx-4 py-4 px-4 border-solid border-2 rounded'>
+            <div key={videoId} className='grid sm:grid-cols-2 my-8 mx-4 py-4 px-4 border-solid border-2 rounded'>
               <div className='my-4 mx-4'>
-                <li key={videoId}>
+                <li>
                   <p className='text-sm text-blue-400'>{videoUploadDate}</p>
                   <a className='text-xl' href={`https://m.youtube.com/watch?v=${videoId}`} target="_blank" rel="noopener noreferrer">
                     {videoTitle}
