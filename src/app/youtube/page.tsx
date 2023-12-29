@@ -30,7 +30,13 @@ export default function Youtube() {
     fetchData()
 
   }, [])
+
   
+  const videoTitle = videoData.items.title
+  const videoId = videoData.items.id
+  const videoUploadDate = videoData.items.snippet.publishedAt
+  const thumbnailUrl = videoData.items.snippet.thumbnail.url
+
 
   return (
     <body>
@@ -45,17 +51,32 @@ export default function Youtube() {
       </header>
 
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <div className='grid sm:grid-cols-2 my-8 mx-4 py-4 px-4 border-solid border-gray-400 border-2 rounded'>
-          <div className='my-4 mx-4'>
+        <ul>
+          {entries.map((entry) => (
+            <div className='grid sm:grid-cols-2 my-8 mx-4 py-4 px-4 border-solid border-2 rounded'>
+              <div className='my-4 mx-4'>
+                <li key={entry.id}>
+                  <p className='text-sm text-blue-400'>アップロード日</p>
+                  <a className='text-xl' href={entry.link} target="_blank" rel="noopener noreferrer">
+                    {entry.title}
+                  </a>
+                  <p className='text-sm text-red-400'>{entry.author}</p>
+                 </li>
+               </div>
+               <div className='flex items-center justify-center'>
+                 <a className='flex items-center justify-center' href={entry.link} target="_blank" rel="noopener noreferrer">
 
-          </div>
-          <div className='flex items-center justify-center'>
-
-          </div>
-        </div>
-      </main>
-
-    </body>
+                   {entry.media_thumbnail[0] && (
+                   <img className='my-4 w-4/5 h-4/5' src={entry.media_thumbnail[0]?.url} alt="サムネイル" />
+                   )}
+                 </a>
+               </div>
+            </div>
+          ))}
+        </ul>
+      </div>
+    </main>
+  </body>
 
   )
 }
