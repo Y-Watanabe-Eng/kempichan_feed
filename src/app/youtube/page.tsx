@@ -61,13 +61,13 @@ export default function Youtube() {
               <div className='my-4 mx-4'>
                 <li key={videoId}>
                   <p className='text-sm text-blue-400'>{videoUploadDate}</p>
-                  <a className='text-xl' href="https://m.youtube.com/watch?v=" + {videoId} target="_blank" rel="noopener noreferrer">
+                  <a className='text-xl' href={"https://m.youtube.com/watch?v=${videoId}"} target="_blank" rel="noopener noreferrer">
                     {videoTitle}
                   </a>
                  </li>
                </div>
                <div className='flex items-center justify-center'>
-                 <a className='flex items-center justify-center' href="https://m.youtube.com/watch?v=" + {videoId} target="_blank" rel="noopener noreferrer">
+                 <a className='flex items-center justify-center' href={"https://m.youtube.com/watch?v=${videoId}"} target="_blank" rel="noopener noreferrer">
                    <img className='my-4 w-4/5 h-4/5' src={thumbnailUrl} alt="サムネイル" />
                  </a>
                </div>
