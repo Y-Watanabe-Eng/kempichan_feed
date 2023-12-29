@@ -8,7 +8,7 @@ interface items {
   id: string
   title: string
   snippet: {
-    publishedAt: datetime
+    publishedAt: date
     thumbnail: {
       url: string
     }
