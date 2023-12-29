@@ -18,9 +18,9 @@ export default function Youtube() {
     const fetchData = async() => {
   
       try {
-        const videoData = await getYoutube()
-        setYoutubeData(videoData.items)
-        console.log(videoData)
+        const videosData = await getYoutube()
+        setYoutubeData(videosData.items)
+        console.log(videosData)
       } catch (error) {
         console.error("Error Youtube Data:", error)
       }
@@ -53,23 +53,27 @@ export default function Youtube() {
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div>
           <ul>
-          {entries.map((entry) => (
+          {videosData.map((videoData) => (
+
+
+           const videoTitle = videoData.items.title
+           const videoId = videoData.items.id
+           const videoUploadDate = videoData.items.snippet.publishedAt
+           const thumbnailUrl = videoData.items.snippet.thumbnail.url
+
+            
             <div className='grid sm:grid-cols-2 my-8 mx-4 py-4 px-4 border-solid border-2 rounded'>
               <div className='my-4 mx-4'>
-                <li key={entry.id}>
-                  <p className='text-sm text-blue-400'>アップロード日</p>
+                <li key={videoId}>
+                  <p className='text-sm text-blue-400'>{videoUploadDate}</p>
                   <a className='text-xl' href={entry.link} target="_blank" rel="noopener noreferrer">
-                    {entry.title}
+                    {videoTitle}
                   </a>
-                  <p className='text-sm text-red-400'>{entry.author}</p>
                  </li>
                </div>
                <div className='flex items-center justify-center'>
-                 <a className='flex items-center justify-center' href={entry.link} target="_blank" rel="noopener noreferrer">
-
-                   {entry.media_thumbnail[0] && (
-                   <img className='my-4 w-4/5 h-4/5' src={entry.media_thumbnail[0]?.url} alt="サムネイル" />
-                   )}
+                 <a className='flex items-center justify-center' href="https://www." + {videoId} target="_blank" rel="noopener noreferrer">
+                   <img className='my-4 w-4/5 h-4/5' src={thumbnailUrl} alt="サムネイル" />
                  </a>
                </div>
             </div>
