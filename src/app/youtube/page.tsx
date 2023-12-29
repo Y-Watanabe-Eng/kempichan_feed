@@ -18,14 +18,14 @@ interface items {
 
 export default function Youtube() {
 
-  const [youtubeData, setYoutubeData] = useState([])
+  const [youtubeData, setYoutubeData] = useState<items[]>([])
 
   useEffect(() =>{
 
     const fetchData = async() => {
   
       try {
-        const videoData = await getYoutube()
+        const videoData: items[] = await getYoutube()
         setYoutubeData(videoData)
         console.log(videoData)
       } catch (error) {
