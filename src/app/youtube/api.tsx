@@ -63,7 +63,7 @@ export default async function getYoutube() {
 //プレイリスト情報の次ページを取得
   const pageToken = playlistData.nextPageToken
 
-  while (pageToken === undefined) {
+  while (pageToken !== undefined) {
 
     async function getPlaylistNext() {
 
