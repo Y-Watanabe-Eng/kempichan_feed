@@ -4,8 +4,15 @@ import { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import getYoutube from './api'
 
-interface Props {
-
+interface items {
+  id: string
+  title: string
+  snippet: {
+    publishedAt: datetime
+    thumbnail: {
+      url: string
+    }
+  }
 }
 
 
