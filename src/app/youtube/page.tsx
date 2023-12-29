@@ -47,13 +47,13 @@ export default function Youtube() {
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div>
           <ul>
-          {youtubeData.map((videoData) => (
+          {youtubeData.map((itemsData) => (
 
 
-           const videoTitle = videoData.items.title
-           const videoId = videoData.items.id
-           const videoUploadDate = videoData.items.snippet.publishedAt
-           const thumbnailUrl = videoData.items.snippet.thumbnail.url
+           const videoTitle = itemsData.title
+           const videoId = itemsData.id
+           const videoUploadDate = itemsData.snippet.publishedAt
+           const thumbnailUrl = itemsData.items.snippet.thumbnail.url
 
             
             return(
