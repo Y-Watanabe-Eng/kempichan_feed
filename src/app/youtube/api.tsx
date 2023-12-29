@@ -60,6 +60,42 @@ export default async function getYoutube() {
   
 
 
+//プレイリスト情報の次ページを取得
+  const pageToken = playlistData.nextPageToken
+
+  while (pageToken === undefined) {
+
+    async function getPlaylistNext() {
+
+      const playlistRes = await fetch(
+        "https://www.googleapis.com/youtube/v3/playlistItems?part=" +
+          "contentDetails" +
+          "&playlistId=" +
+          uploadsId +
+          "&maxResults=50" +
+          "&pageToken=" +
+          pageToken +
+          "&key=" +
+          apiKey
+       )
+
+      const playlistData = await playlistRes.json()
+
+      return playlistData;
+
+    }
+
+    const playlistData = await getPlaylistNext()
+
+    for (let i = 0; i < 50; i++) {
+      videoIdArray.push(playlistData.items[i].contentDetails.videoId)
+    }
+
+    return videoIdArray
+
+  }
+
+
 //動画データの取得
   async function getVideo() {
 
