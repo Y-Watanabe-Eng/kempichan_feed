@@ -31,12 +31,6 @@ export default function Youtube() {
 
   }, [])
 
-  
-  const videoTitle = videoData.items.title
-  const videoId = videoData.items.id
-  const videoUploadDate = videoData.items.snippet.publishedAt
-  const thumbnailUrl = videoData.items.snippet.thumbnail.url
-
 
   return (
     <body>
