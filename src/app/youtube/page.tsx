@@ -18,9 +18,9 @@ export default function Youtube() {
     const fetchData = async() => {
   
       try {
-        const videosData = await getYoutube()
-        setYoutubeData(videosData.items)
-        console.log(videosData)
+        const videoData = await getYoutube()
+        setYoutubData(videosData.items)
+        console.log(videoData)
       } catch (error) {
         console.error("Error Youtube Data:", error)
       }
@@ -47,13 +47,7 @@ export default function Youtube() {
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div>
           <ul>
-          {videosData.map((videoData) => (
-
-
-           const videoTitle = videoData.items.title
-           const videoId = videoData.items.id
-           const videoUploadDate = videoData.items.snippet.publishedAt
-           const thumbnailUrl = videoData.items.snippet.thumbnail.url
+          {youtubeData.map((videoData) => (
 
             
             <div className='grid sm:grid-cols-2 my-8 mx-4 py-4 px-4 border-solid border-2 rounded'>
