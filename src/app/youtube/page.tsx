@@ -51,7 +51,8 @@ export default function Youtube() {
       </header>
 
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <ul>
+        <div>
+          <ul>
           {entries.map((entry) => (
             <div className='grid sm:grid-cols-2 my-8 mx-4 py-4 px-4 border-solid border-2 rounded'>
               <div className='my-4 mx-4'>
