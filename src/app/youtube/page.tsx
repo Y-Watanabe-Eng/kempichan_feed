@@ -49,7 +49,14 @@ export default function Youtube() {
           <ul>
           {youtubeData.map((videoData) => (
 
+
+           const videoTitle = videoData.items.title
+           const videoId = videoData.items.id
+           const videoUploadDate = videoData.items.snippet.publishedAt
+           const thumbnailUrl = videoData.items.snippet.thumbnail.url
+
             
+            return(
             <div className='grid sm:grid-cols-2 my-8 mx-4 py-4 px-4 border-solid border-2 rounded'>
               <div className='my-4 mx-4'>
                 <li key={videoId}>
@@ -65,7 +72,7 @@ export default function Youtube() {
                  </a>
                </div>
             </div>
-          ))}
+          )})}
         </ul>
       </div>
     </main>
