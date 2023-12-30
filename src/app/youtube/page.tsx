@@ -1,40 +1,45 @@
 "use client"
 
 import { useEffect, useState } from 'react'
-import getYoutube from './api'
+import getYoutube from './getYoutube'
+import Image from 'next/image'
 
 interface items {
   id: string
-  title: string
   snippet: {
+    title: string
     publishedAt: string
-    thumbnail: {
-      url: string
+    description: string
+    thumbnails: {
+      high: {
+        url: string
+      }
     }
+  }
+  statistics: {
+    viewCount: string
+    likeCount: string
+    commentCount: string 
   }
 }
 
 
 export default function Youtube() {
 
-  const [youtubeData, setYoutubeData] = useState<items[]>([])
+  const [videoData, setVideoData] = useState<items[]>([])
 
   useEffect(() =>{
-    const fetchData = async() => {
-      try {
-        const data: items[] = await getYoutube()
-        setYoutubeData(data)
-        console.log(data)
+    (async() => {
+      try{
+        const fetchData = await getYoutube()
+        setVideoData(fetchData)
+        console.log(fetchData)
       } catch (error) {
         console.error("Error Fetching Data:", error)
       }
-    }
-
-    fetchData()
-
+    })()
   }, [])
 
-  console.log(youtubeData)
   console.log("client:" + new Date())
 
 
@@ -46,39 +51,51 @@ export default function Youtube() {
         <div className='h-28 bg-red-600 flex items-center justify-center'>
           <div className='w-9/12'>
             <h1 className='text-4xl text-white pt-4'>けんぴ。ちゃんテナ</h1>
-            <p className='pt-2 pl-2'>from Youtube</p>
+            <p className='pt-2 pl-2 text-gray-800'>from Youtube</p>
           </div>
         </div>
       </header>
 
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center justify-center py-10 px-20">
+        
+        <div className='sm:w-5/6 px-4'>
+          <h2 className='text-lg'>@けんぴ。ちゃんねる</h2>
+        </div>
 
-{/*
-        <div>
-          <ul>
-          {youtubeData.map((video) => (
-            <div key={video.id} className='grid sm:grid-cols-2 my-8 mx-4 py-4 px-4 border-solid border-gray-600 border-2 rounded'>
-              <div className='my-4 mx-4'>
-                <li>
-                  <p className='text-sm text-blue-400'>{video.snippet.publishedAt}</p>
-                  <a className='text-xl' href={`https://m.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener noreferrer">
-                    {video.title}
-                  </a>
-                </li>
-              </div>
+        {videoData.map((video) => (
+          <div key={video.id} className='flex items-center justify-center sm:w-5/6'>
+            <div className='grid sm:grid-cols-2 my-8 mx-4 p-4 border-solid border-gray-600 border-2 rounded'>
+
               <div className='flex items-center justify-center'>
-                <a className='flex items-center justify-center' href={`https://m.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener noreferrer">
-                  <img className='my-4 w-4/5 h-4/5' src={video.snippet.thumbnail.url} alt="サムネイル" />
+                <a className='flex items-center justify-center' 
+                href={`https://m.youtube.com/watch?v=${video.id}`} 
+                target="_blank" 
+                rel="noopener noreferrer">
+                  <Image src={video.snippet.thumbnails.high.url} 
+                  alt="サムネイル"
+                  width={360}
+                  height={270} />
                 </a>
               </div>
+
+              <div className='my-4 mx-4'>
+                <p className='text-sm text-blue-400'>{video.snippet.publishedAt.replace(/[T]|[Z]/g,' ')}</p>
+                <a className='sm:text-lg text-gray-800' 
+                href={`https://m.youtube.com/watch?v=${video.id}`} 
+                target="_blank" rel="noopener noreferrer">
+                  {video.snippet.title}
+                </a>
+              </div>
+
             </div>
-          ))}
-        </ul>
-      </div>
-*/}
-    </main>
+            <br/>
+
+          </div>
+        ))}
+
+      </main>
           
-  </body>
+    </body>
 
   )
 }

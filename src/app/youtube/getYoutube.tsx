@@ -113,9 +113,6 @@ export default async function getYoutube() {
 
   const videoData = await getVideo()
 
-  console.log(videoData.items)
-  console.log("server:" + new Date())
-
   return videoData.items
 
 }
