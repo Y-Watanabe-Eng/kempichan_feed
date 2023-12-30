@@ -1,6 +1,4 @@
-"use server"
-
-export default async function getYoutube() {
+async function getYoutube() {
 
   const apiKey = process.env.YOUTUBE_API_KEY
   const channelId = "UCUBvFfyuBrATTPxnAZ4OsCQ"
@@ -57,7 +55,7 @@ export default async function getYoutube() {
   }
   
 
-{/*
+
 //プレイリスト情報の次ページを取得
   async function getPlaylistNext() {
 
@@ -83,15 +81,13 @@ export default async function getYoutube() {
         videoIdArray.push(playlistData.items[j].contentDetails.videoId)
       }
 
-      return videoIdArray
-
     }
+
+    return videoIdArray
 
   }
 
   await getPlaylistNext()
-*/}
-
 
 //動画データの取得
   async function getVideo() {
@@ -113,9 +109,10 @@ export default async function getYoutube() {
 
   const videoData = await getVideo()
 
-  console.log(videoData.items)
-  console.log("server:" + new Date())
+  console.log(videoData)
 
-  return videoData.items
+  return videoData
 
 }
+
+getYoutube()

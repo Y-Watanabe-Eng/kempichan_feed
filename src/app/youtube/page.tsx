@@ -1,6 +1,5 @@
 "use client"
 
-import { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import getYoutube from './api'
 
@@ -8,7 +7,7 @@ interface items {
   id: string
   title: string
   snippet: {
-    publishedAt: date
+    publishedAt: string
     thumbnail: {
       url: string
     }
@@ -21,25 +20,26 @@ export default function Youtube() {
   const [youtubeData, setYoutubeData] = useState<items[]>([])
 
   useEffect(() =>{
-
     const fetchData = async() => {
-  
       try {
-        const videoData: items[] = await getYoutube()
-        setYoutubeData(videoData.items)
-        console.log(videoData)
+        const data: items[] = await getYoutube()
+        setYoutubeData(data)
+        console.log(data)
       } catch (error) {
-        console.error("Error Youtube Data:", error)
+        console.error("Error Fetching Data:", error)
       }
-
     }
 
     fetchData()
 
   }, [])
 
+  console.log(youtubeData)
+  console.log("client:" + new Date())
+
 
   return (
+    
     <body>
 
       <header>
@@ -52,37 +52,32 @@ export default function Youtube() {
       </header>
 
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
+
+{/*
         <div>
           <ul>
           {youtubeData.map((video) => (
-
-
-           const videoTitle = video.items.title
-           const videoId = video.items.id
-           const videoUploadDate = video.items.snippet.publishedAt
-           const thumbnailUrl = video.items.snippet.thumbnail.url
-
-            
-            return(
-            <div key={videoId} className='grid sm:grid-cols-2 my-8 mx-4 py-4 px-4 border-solid border-2 rounded'>
+            <div key={video.id} className='grid sm:grid-cols-2 my-8 mx-4 py-4 px-4 border-solid border-gray-600 border-2 rounded'>
               <div className='my-4 mx-4'>
                 <li>
-                  <p className='text-sm text-blue-400'>{videoUploadDate}</p>
-                  <a className='text-xl' href={`https://m.youtube.com/watch?v=${videoId}`} target="_blank" rel="noopener noreferrer">
-                    {videoTitle}
+                  <p className='text-sm text-blue-400'>{video.snippet.publishedAt}</p>
+                  <a className='text-xl' href={`https://m.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener noreferrer">
+                    {video.title}
                   </a>
-                 </li>
-               </div>
-               <div className='flex items-center justify-center'>
-                 <a className='flex items-center justify-center' href={`https://m.youtube.com/watch?v=${videoId}`} target="_blank" rel="noopener noreferrer">
-                   <img className='my-4 w-4/5 h-4/5' src={thumbnailUrl} alt="サムネイル" />
-                 </a>
-               </div>
+                </li>
+              </div>
+              <div className='flex items-center justify-center'>
+                <a className='flex items-center justify-center' href={`https://m.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener noreferrer">
+                  <img className='my-4 w-4/5 h-4/5' src={video.snippet.thumbnail.url} alt="サムネイル" />
+                </a>
+              </div>
             </div>
-          )})}
+          ))}
         </ul>
       </div>
+*/}
     </main>
+          
   </body>
 
   )
