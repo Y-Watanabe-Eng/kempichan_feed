@@ -50,24 +50,24 @@ export default function Youtube() {
       <header>
         <div className='h-28 bg-red-600 flex items-center justify-center'>
           <div className='w-8/12'>
-            <h1 className='text-3xl text-white'>けんぴ。ちゃんテナ</h1>
+            <h1 className='text-4xl text-white'>けんぴ。ちゃんテナ</h1>
             <p className='pt-2 pl-2 text-gray-800'>from Youtube</p>
           </div>
         </div>
       </header>
 
-      <main className="flex min-h-screen flex-col items-center justify-center py-10 px-20">
+      <main className="flex min-h-screen flex-col items-center justify-center py-10">
         
-        <div className='sm:w-5/6'>
+        <div className='sm:w-8/12'>
           <h2 className='text-lg'>@けんぴ。ちゃんねる</h2>
         </div>
 
         {videoData.map((video) => (
-          <div key={video.id} className='flex items-center justify-center sm:w-5/6'>
-            <div className='grid sm:grid-cols-2 my-8 border-solid border-gray-600 border-2 rounded'>
+          <div key={video.id} className='flex items-center justify-center'>
+            <div className='grid sm:grid-cols-2 sm:w-8/12 my-8 p-4 border-solid border-gray-600 border-2 rounded'>
 
               <div className='flex items-center justify-center'>
-                <a className='flex items-center justify-center' 
+                <a 
                 href={`https://m.youtube.com/watch?v=${video.id}`} 
                 target="_blank" 
                 rel="noopener noreferrer">
