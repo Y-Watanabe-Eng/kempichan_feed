@@ -57,7 +57,32 @@ export default async function getYoutube() {
   
   console.log(videoIdArray)
 
-{/*
+
+//動画データの取得
+  async function getVideo() {
+
+    const videoRes = await fetch(
+      "https://www.googleapis.com/youtube/v3/videos?part=" +
+        "snippet" +
+        "&id=" +
+        videoIdArray +
+        "&key=" +
+        apiKey
+      )
+      
+    const videoData = await videoRes.json()
+
+    return videoData.items;
+
+  }
+
+  let videoData = await getVideo()
+
+//playlistData = プレイリスト情報のJSONファイル（動画ID取得用）
+//videoData = 動画情報のJSONファイル
+//videoIdArray = 動画IDを格納した配列
+
+
 //プレイリスト情報の次ページを取得
   let pageToken = playlistData.nextPageToken
 
@@ -79,8 +104,10 @@ export default async function getYoutube() {
 
       const nextPlaylistData = await nextPlaylistRes.json()
 
+      let nextVideoIdArray: string[] = []
+
       for (let j = 0; j < nextPlaylistData.items.length; j++) {
-        videoIdArray.push(nextPlaylistData.items[j].contentDetails.videoId)
+        nextVideoIdArray.push(nextPlaylistData.items[j].contentDetails.videoId)
       }
 
       if (nextPlaylistData.nextPageToken !== undefined) {
@@ -89,39 +116,29 @@ export default async function getYoutube() {
         pageToken = undefined
       }
 
+      const nextVideoRes = await fetch(
+        "https://www.googleapis.com/youtube/v3/videos?part=" +
+          "snippet" +
+          "&id=" +
+          nextVideoIdArray +
+          "&key=" +
+          apiKey
+      )
+          
+      let nextVideoData = await nextVideoRes.json()
+
+      console.log(nextVideoData.items)
+
+      videoData = videoData.concat(nextVideoData.items)
+
     }
 
-    return videoIdArray
+    return videoData
 
   }
 
   await getPlaylistNext()
 
-  console.log(videoIdArray)
-*/}
-
-//動画データの取得
-  async function getVideo() {
-
-    const videoRes = await fetch(
-      "https://www.googleapis.com/youtube/v3/videos?part=" +
-        "snippet" +
-        "&id=" +
-        videoIdArray +
-        "&key=" +
-        apiKey
-      )
-      
-    const videoData = await videoRes.json()
-
-    return videoData;
-
-  }
-
-  await getVideo()
-
-  const videoData = await getVideo()
-
-  return videoData.items
+  return videoData
 
 }

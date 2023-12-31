@@ -1,12 +1,19 @@
-import { NextPage } from 'next'
+"use client"
+
+import '../globals.css'
+import { useEffect, useState } from 'react'
+import getYoutube from './getTwitch'
+import Image from 'next/image'
+
 
 interface Props {
 
 }
 
-const Twitch: NextPage<Props> = () => {
+export default function Twitch () {
+
   return (
-    <body>
+    <>
 
       <header>
         <div className='h-28 bg-blue-500 flex items-center justify-center'>
@@ -19,22 +26,10 @@ const Twitch: NextPage<Props> = () => {
 
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
 
-        <div className='grid sm:grid-cols-2 my-8 mx-4 py-4 px-4 border-solid border-black border-2 rounded'>
 
-          <div className='my-4 mx-4'>
-
-          </div>
-
-          <div className='flex items-center justify-center'>
-            
-          </div>
-
-        </div>
 
       </main>
       
-    </body>
+    </>
   )
 }
-
-export default Twitch
