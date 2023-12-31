@@ -64,7 +64,7 @@ export default function Youtube() {
 
         {videoData.map((video) => (
           <div key={video.id} className='flex items-center justify-center'>
-            <div className='grid sm:grid-cols-2 sm:w-8/12 my-8 p-4 border-solid border-gray-600 border-2 rounded'>
+            <div className='grid sm:grid-cols-2 sm:w-8/12 w-10/12 my-8 p-4 border-solid border-gray-600 border-2 rounded'>
 
               <div className='flex items-center justify-center'>
                 <a 
@@ -80,7 +80,7 @@ export default function Youtube() {
 
               <div className='my-4 mx-4'>
                 <p className='text-sm text-blue-400'>{video.snippet.publishedAt.replace(/[T]|[Z]/g,' ')}</p>
-                <a className='sm:text-lg text-gray-800' 
+                <a className='sm:text-lg text-gray-600' 
                 href={`https://m.youtube.com/watch?v=${video.id}`} 
                 target="_blank" rel="noopener noreferrer">
                   {video.snippet.title}
