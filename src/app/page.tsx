@@ -1,6 +1,6 @@
 "use client"
 
-import '../globals.css'
+import './globals.css'
 import { useEffect, useState } from 'react'
 import getYoutube from './youtube/getYoutube'
 import Image from 'next/image'
@@ -51,7 +51,7 @@ export default function Youtube() {
         <div className='h-28 bg-red-600 flex items-center justify-center'>
           <div className='flex flex-col justify-start sm:w-8/12'>
             <div>
-              <h1 className='sm:text-4xl text-3xl text-white'>けんぴ。ちゃんテナ</h1>
+              <h1 className='sm:text-4xl text-2xl text-white'>けんぴ。ちゃんテナ</h1>
               <p className='pt-2 pl-2 text-gray-800'>from Youtube</p>
             </div>
           </div>

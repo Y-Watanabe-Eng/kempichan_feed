@@ -28,6 +28,7 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -35,3 +36,4 @@ body {
     --background-end-rgb: 0, 0, 0;
   }
 }
+*/
