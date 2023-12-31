@@ -28,7 +28,6 @@ export default async function getYoutube() {
   const uploadsId = channelData.items[0].contentDetails.relatedPlaylists.uploads
 
 
-
 //プレイリスト情報の取得
   async function getPlaylist() {
 
@@ -56,16 +55,17 @@ export default async function getYoutube() {
     videoIdArray.push(playlistData.items[i].contentDetails.videoId)
   }
   
+  console.log(videoIdArray)
 
 {/*
 //プレイリスト情報の次ページを取得
-  async function getPlaylistNext() {
+  let pageToken = playlistData.nextPageToken
 
-    const pageToken = playlistData.nextPageToken
+  async function getPlaylistNext() {
 
     while (pageToken !== undefined) {
 
-      const playlistRes = await fetch(
+      const nextPlaylistRes = await fetch(
         "https://www.googleapis.com/youtube/v3/playlistItems?part=" +
           "contentDetails" +
           "&playlistId=" +
@@ -75,23 +75,30 @@ export default async function getYoutube() {
           pageToken +
           "&key=" +
           apiKey
-       )
+      )
 
-      const playlistData = await playlistRes.json()
+      const nextPlaylistData = await nextPlaylistRes.json()
 
-      for (let j = 0; j < playlistData.items.length; j++) {
-        videoIdArray.push(playlistData.items[j].contentDetails.videoId)
+      for (let j = 0; j < nextPlaylistData.items.length; j++) {
+        videoIdArray.push(nextPlaylistData.items[j].contentDetails.videoId)
       }
 
-      return videoIdArray
+      if (nextPlaylistData.nextPageToken !== undefined) {
+        pageToken = nextPlaylistData.nextPageToken
+      } else {
+        pageToken = undefined
+      }
 
     }
+
+    return videoIdArray
 
   }
 
   await getPlaylistNext()
-*/}
 
+  console.log(videoIdArray)
+*/}
 
 //動画データの取得
   async function getVideo() {
@@ -110,6 +117,8 @@ export default async function getYoutube() {
     return videoData;
 
   }
+
+  await getVideo()
 
   const videoData = await getVideo()
 
