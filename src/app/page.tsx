@@ -101,7 +101,7 @@ export default function Youtube() {
           ))}
         </div>
 
-      <Pagination count={14} variant="outlined" color="secondary" />
+      <Pagination count={30} variant="outlined" color="secondary" />
 
       </main>
 
