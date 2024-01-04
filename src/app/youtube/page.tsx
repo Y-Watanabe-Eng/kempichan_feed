@@ -39,7 +39,7 @@ export default function Youtube() {
         console.error("Error Fetching Data:", error)
       }
     })()
-  }, [fetchData])
+  }, [])
 
   console.log("client:" + new Date())
 
