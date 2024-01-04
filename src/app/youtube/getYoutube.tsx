@@ -139,6 +139,8 @@ export default async function getYoutube() {
 
   await getPlaylistNext()
 
+  console.log(videoIdArray)
+
   return videoData
 
 }
