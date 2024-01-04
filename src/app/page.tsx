@@ -4,6 +4,9 @@ import './globals.css'
 import { useEffect, useState } from 'react'
 import getYoutube from './youtube/getYoutube'
 import Image from 'next/image'
+import Pagination from '@mui/material/Pagination'
+import Stack from '@mui/material/Stack'
+
 
 interface items {
   id: string
@@ -56,6 +59,9 @@ export default function Youtube() {
         </div>
       </header>
 
+
+      <Stack spacing={2}>
+
       <main className="flex min-h-screen flex-col items-center justify-center py-10">
         
         <div className='sm:w-8/12 w-10/12'>
@@ -96,6 +102,8 @@ export default function Youtube() {
         </div>
 
       </main>
+
+      </Stack>
           
     </>
   )
