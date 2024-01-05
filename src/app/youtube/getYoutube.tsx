@@ -54,7 +54,8 @@ export default async function getYoutube() {
   for (let i = 0; i < playlistData.items.length; i++) {
     videoIdArray.push(playlistData.items[i].contentDetails.videoId)
   }
-  
+
+
   console.log(videoIdArray)
 
 
@@ -127,8 +128,6 @@ export default async function getYoutube() {
           
       let nextVideoData = await nextVideoRes.json()
 
-      console.log(nextVideoData.items)
-
       videoData = videoData.concat(nextVideoData.items)
 
     }
@@ -138,8 +137,6 @@ export default async function getYoutube() {
   }
 
   await getPlaylistNext()
-
-  console.log(videoIdArray)
 
   return videoData
 
