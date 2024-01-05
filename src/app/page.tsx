@@ -60,7 +60,7 @@ export default function Youtube() {
       </header>
 
 
-      <main className="flex min-h-screen flex-col items-center justify-center py-10 bg-gradient-to-br from-transparent via-blue-200 to-red-100">
+      <main className="flex min-h-screen flex-col items-center justify-center py-10 bg-gradient-to-br from-transparent via-blue-100 to-red-100">
         
         <div className='sm:w-8/12 w-10/12'>
           <h2 className='text-lg'>@けんぴ。ちゃんねる</h2>
