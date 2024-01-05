@@ -39,7 +39,7 @@ export default async function getYoutube() {
         uploadsId +
         "&maxResults=50" +
         "&key=" +
-        apiKey
+        apiKey,
       { cache: 'no-store', }
     )
       
@@ -70,7 +70,7 @@ export default async function getYoutube() {
         "&id=" +
         videoIdArray +
         "&key=" +
-        apiKey
+        apiKey,
       { cache: 'no-store', }
     )
       
@@ -103,7 +103,7 @@ export default async function getYoutube() {
           "&pageToken=" +
           pageToken +
           "&key=" +
-          apiKey
+          apiKey,
       { cache: 'no-store', }
     )
 
@@ -127,7 +127,7 @@ export default async function getYoutube() {
           "&id=" +
           nextVideoIdArray +
           "&key=" +
-          apiKey
+          apiKey,
       { cache: 'no-store', }
     )
           
