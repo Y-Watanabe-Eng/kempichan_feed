@@ -15,7 +15,7 @@ export default async function getYoutube() {
         channelId + 
         "&key=" +
         apiKey,
-      { cache: 'no-store' }
+      { cache: 'no-store', }
     )
       
     const channelData = await channelRes.json()
@@ -40,7 +40,7 @@ export default async function getYoutube() {
         "&maxResults=50" +
         "&key=" +
         apiKey
-      { cache: 'no-store' }
+      { cache: 'no-store', }
     )
       
     const playlistData = await playlistRes.json()
@@ -71,7 +71,7 @@ export default async function getYoutube() {
         videoIdArray +
         "&key=" +
         apiKey
-      { cache: 'no-store' }
+      { cache: 'no-store', }
     )
       
     const videoData = await videoRes.json()
@@ -104,7 +104,7 @@ export default async function getYoutube() {
           pageToken +
           "&key=" +
           apiKey
-      { cache: 'no-store' }
+      { cache: 'no-store', }
     )
 
       const nextPlaylistData = await nextPlaylistRes.json()
@@ -128,7 +128,7 @@ export default async function getYoutube() {
           nextVideoIdArray +
           "&key=" +
           apiKey
-      { cache: 'no-store' }
+      { cache: 'no-store', }
     )
           
       let nextVideoData = await nextVideoRes.json()
