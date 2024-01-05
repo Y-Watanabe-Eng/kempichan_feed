@@ -60,8 +60,6 @@ export default function Youtube() {
       </header>
 
 
-      <Stack spacing={2}>
-
       <main className="flex min-h-screen flex-col items-center justify-center py-10">
         
         <div className='sm:w-8/12 w-10/12'>
@@ -101,11 +99,11 @@ export default function Youtube() {
           ))}
         </div>
 
-      <Pagination count={30} variant="outlined" color="secondary" />
+        <Stack spacing={2}>
+          <Pagination count={30} variant="outlined" color="secondary" />
+        </Stack>
 
       </main>
-
-      </Stack>
           
     </>
   )
